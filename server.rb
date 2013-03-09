@@ -17,3 +17,13 @@ get '/play/:dir' do
 	`mocp -p`
 	redirect to('/')
 end
+
+get '/volume_plus' do
+	`mocp -v +5`
+	redirect to('/')
+end
+
+get '/volume_minus' do
+	`mocp -v -5`
+	redirect to('/')
+end

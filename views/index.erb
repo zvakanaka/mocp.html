@@ -1,5 +1,12 @@
-<ul>
-<% artists.each do |artist| %>
-	<li><a href="/play/<%= artist %>"><%= artist %></a></li>
-<% end %>
-</ul>
+<div>
+	<a href="/volume_minus">Volume -</a>
+	<span>&nbsp;</span>
+	<a href="/volume_plus">Volume +</a>
+</div>
+<div>
+	<ul>
+	<% artists.each do |artist| %>
+		<li><a href="/play/<%= artist %>"><%= artist %></a></li>
+	<% end %>
+	</ul>
+</div>
