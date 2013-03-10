@@ -1,12 +1,35 @@
-<div>
-	<a href="/volume_minus">Volume -</a>
-	<span>&nbsp;</span>
-	<a href="/volume_plus">Volume +</a>
-</div>
-<div>
-	<ul>
-	<% artists.each do |artist| %>
-		<li><a href="/play/<%= artist %>"><%= artist %></a></li>
+<head>
+<style>
+
+body {
+	font-family: sans-serif;
+}
+
+a {
+	color: black; 
+	text-decoration: none;
+	display: block;
+	background-color: #FFDEAD;
+	margin-top: 5px;
+	padding: 5px;
+}
+
+a.volume{
+	background-color: #F4A460;
+}
+
+a:hover, a.volume:hover {
+	background-color: #DEB887;
+}
+
+</style>
+</head>
+<body>
+	<a class="volume" href="/volume_minus">Volume -</a>
+	<a class="volume" href="/volume_plus">Volume +</a>
+	<div> 
+	</div>
+	<% dirs.each do |dir| %>
+		<a id="<%= dir %>" href="/play/<%= dir %>"><%= dir %></a>
 	<% end %>
-	</ul>
-</div>
+</body>

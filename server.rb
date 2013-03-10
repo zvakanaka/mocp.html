@@ -1,21 +1,24 @@
 require 'rubygems'
 require 'sinatra'
+require 'uri'
 
 $music_dir = '/media/truecrypt1/Fraunhofer Society'
 
 get '/' do
-	artists_fullpaths = Dir.glob File.join($music_dir, '*')
-	artists = artists_fullpaths.collect{|a| File.basename(a)}.sort
-	erb :index, :locals => {:artists => artists}
+	dirs = Dir.glob File.join($music_dir, '*')
+	dirs = dirs.collect{|a| File.basename(a)}.sort
+	erb :index, :locals => {:dirs => dirs}
 end
 
 get '/play/:dir' do
-	dir_to_play = File.join $music_dir, params[:dir]
+	dir = params[:dir]
+	dir_to_play = File.join $music_dir, dir
 	`mocp -s`
 	`mocp -c`
 	`mocp -a "#{dir_to_play}"`
 	`mocp -p`
-	redirect to('/')
+	safe_dir = URI.escape dir
+	redirect to("/\##{safe_dir}")
 end
 
 get '/volume_plus' do
