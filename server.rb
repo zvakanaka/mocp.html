@@ -30,3 +30,8 @@ get '/volume_minus' do
 	`mocp -v -5`
 	redirect to('/')
 end
+
+get '/pause' do
+	`mocp -G`
+	redirect to('/')
+end
