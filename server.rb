@@ -2,7 +2,9 @@ require 'rubygems'
 require 'sinatra'
 require 'uri'
 
-$music_dir = '/media/truecrypt1/Fraunhofer Society'
+set :bind, '0.0.0.0'
+
+$music_dir = '/home/alice/Music/'
 
 get '/' do
 	dirs = Dir.glob File.join($music_dir, '*')
@@ -34,4 +36,15 @@ end
 get '/pause' do
 	`mocp -G`
 	redirect to('/')
+end
+
+post '/upload' do
+  
+  @filename = params[:file][:filename]
+  file = params[:file][:tempfile]
+
+  File.open($music_dir+"#{@filename}", 'wb') do |f|
+    f.write(file.read)
+  end
+  redirect to('/')
 end

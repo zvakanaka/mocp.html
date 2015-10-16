@@ -29,6 +29,10 @@ a:hover, a.volume:hover {
 	<a class="volume" href="/volume_minus">Volume -</a>
 	<a class="volume" href="/volume_plus">Volume +</a>
 	<div> 
+        <form action="http://localhost:4567/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <input type="submit" value="Upload Music">
+        </form>
 	</div>
 	<% dirs.each do |dir| %>
 		<a id="<%= dir %>" href="/play/<%= dir %>"><%= dir %></a>
