@@ -4,7 +4,7 @@ require 'uri'
 
 set :bind, '0.0.0.0'
 
-$music_dir = '/home/alice/Music/'
+$music_dir = '/home/pi/Music/'
 
 get '/' do
 	dirs = Dir.glob File.join($music_dir, '*')
